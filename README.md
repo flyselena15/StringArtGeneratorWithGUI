@@ -1,1 +1,1 @@
-# StringArtGeneratorWithGui
+# StringArtGeneratorWithGUI
