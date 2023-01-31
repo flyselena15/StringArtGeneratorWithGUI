@@ -96,7 +96,7 @@ def Generate():
     d1 = current_dateTime.strftime("%Y%m%d%H%M%S")
 
 
-    axis_index_name = os.path.join(os.getcwd(),'doc', "axis_w_index_" + d1 + ".txt")
+    axis_index_name = os.path.join(os.getcwd(),'StringArt_doc', "axis_w_index_" + d1 + ".txt")
     print(axis_index_name)
     os.makedirs(os.path.dirname(axis_index_name), exist_ok=True)
     f4 = open(axis_index_name, "w+")
@@ -106,7 +106,7 @@ def Generate():
     f4.close()
 
 
-    point_ref_name = os.path.join(os.getcwd(), 'doc', "point_reference_" + d1 + ".txt")
+    point_ref_name = os.path.join(os.getcwd(), 'StringArt_doc', "point_reference_" + d1 + ".txt")
     os.makedirs(os.path.dirname(point_ref_name), exist_ok=True)
     f = open(point_ref_name, 'w+')
     for t in point_ref:
@@ -114,7 +114,7 @@ def Generate():
         f.write(line + '\n')
     f.close()
 
-    order_name = os.path.join(os.getcwd(), 'doc', "order_" + d1 + ".txt")
+    order_name = os.path.join(os.getcwd(), 'StringArt_doc', "order_" + d1 + ".txt")
     os.makedirs(os.path.dirname(order_name), exist_ok=True)
     f5 = open(order_name, 'w+')
     for t in order[1:]:
@@ -146,7 +146,7 @@ def Generate():
         plt.draw()
         plt.pause(0.000001)
 
-    save_fig_path = os.path.join(os.getcwd(), 'doc', "result_" + d1 + ".png")
+    save_fig_path = os.path.join(os.getcwd(), 'StringArt_doc', "result_" + d1 + ".png")
     os.makedirs(os.path.dirname(save_fig_path), exist_ok=True)
     plt.savefig(save_fig_path, bbox_inches='tight', pad_inches=0)
     
