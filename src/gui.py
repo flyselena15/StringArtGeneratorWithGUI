@@ -7,17 +7,23 @@ import os
 from datetime import datetime
 from PIL import ImageTk, Image
 import matplotlib.pyplot as plt
+from tkinter import messagebox
 
+from stringart import StringArtGenerator
 
 
 import csv
 import matplotlib.pyplot as plt
-from stringart import StringArtGenerator
+
 
 image_list = {}
 def Upload():
     print('upload')
-    selectFileName = tk.filedialog.askopenfile(mode='r', title = 'Select a image' )
+    selectFileName = tk.filedialog.askopenfile(mode='r', title = 'Select a image', filetypes=[
+                    ("image", ".jpeg"),
+                    ("image", ".png"),
+                    ("image", ".jpg"),
+                ])
     filepath = os.path.abspath(selectFileName.name)
     print(filepath)
     path_label.configure(text=filepath)
@@ -48,6 +54,9 @@ def Generate():
     # nails_value = int(nails_value)
     # weight_value = int(weight_value)
     # iteration_value = int(iteration_value)
+    if nails_entry.get() == '' or iteration_entry.get() == '' or iteration_entry.get() == '' or weight_entry.get() == '' or path_label.cget("text") == '':
+        messagebox.showwarning("Warning","Please fill all the blanks above")
+        return None 
 
     generator = StringArtGenerator()  
     generator.load_image(path_label.cget("text"))
@@ -232,25 +241,16 @@ generate_btn.pack(side=tk.TOP)
 
 # Show Upload image
 upload_image_frame = tk.Frame(window)
-# upload_image_frame.pack(padx = 10, pady=10, side=tk.LEFT)
 upload_image_frame.place(relx = 0.05, rely=0.55)
 imageLabel = tk.Label(upload_image_frame)
-# imageLabel.grid(row=0,column=1)
 imageLabel.pack(side=tk.LEFT)
 
 # Show result image
 result_image_frame = tk.Frame(window)
-# result_image_frame.pack(padx = 10, pady=10, side=tk.LEFT)
 result_image_frame.place(relx = 0.6, rely=0.55)
 result_imageLabel = tk.Label(result_image_frame)
 result_imageLabel.pack(side = tk.LEFT)
-# result_imageLabel.grid(row=0,column=2)
 
 
-
-
-
-# btn2 = Button(window,text=' Download ', command=Download).grid(row=2, column=0,pady=5)
-# btn3 = Button(window,text=' Copy ', ).grid(row=3, column=0,pady=5)
 
 mainloop()
